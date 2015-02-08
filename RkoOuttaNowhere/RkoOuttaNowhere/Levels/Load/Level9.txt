@@ -1,4 +1,5 @@
 ﻿1
-1
+3
 ---
-WeakMelee 1
+WeakMelee 50
+WeakRanged 25

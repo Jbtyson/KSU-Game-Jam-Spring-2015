@@ -1,13 +1,6 @@
-﻿3
-4
+﻿2
+2
 ---
-WeakMelee 6
+WeakAerialMelee 5
 ---
-WeakMelee 9
-WeakRanged 3
----
-WeakMelee 6
-WeakRanged 6
----
-WeakMelee 9
-WeakRanged 6
+WeakMelee 15
