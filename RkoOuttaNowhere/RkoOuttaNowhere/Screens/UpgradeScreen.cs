@@ -14,6 +14,7 @@ using System.IO;
 using RkoOuttaNowhere.Gameplay;
 using RkoOuttaNowhere.Ui;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace RkoOuttaNowhere.Screens
 {
@@ -89,12 +90,21 @@ namespace RkoOuttaNowhere.Screens
 
         private void upgradeHealth(Object o, EventArgs e)
         {
-            if (RKOGame.Instance.getCurrency >= 500)
+            //if (RKOGame.Instance.getCurrency >= 500)
             {
                 Upgrade.HealthIncrease += 25;
                 RKOGame.Instance.getHealth += (int)Upgrade.HealthIncrease;
                 RKOGame.Instance.getCurrency -= 500;
-                soundEngine.Play();
+                try
+                {
+                    SoundEffect sf = new SoundEffect();
+                    ContentManager temp = this._content;
+                    temp.Load<SoundEffect>("sfx/money").Play();
+                    SongCollection playlist = new SongCollection();
+                    playlist.Add(_content.Load<Song>("sfx/money"));
+                    MediaPlayer.Play(playlist);
+                }
+                catch (Exception f) { }
             }
         }
 

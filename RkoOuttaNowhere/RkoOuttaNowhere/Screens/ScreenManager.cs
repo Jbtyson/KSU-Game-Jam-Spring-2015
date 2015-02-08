@@ -12,6 +12,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using RkoOuttaNowhere.Images;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace RkoOuttaNowhere.Screens
 {
@@ -24,6 +26,7 @@ namespace RkoOuttaNowhere.Screens
         private static ScreenManager _instance;
         private GameScreen _currentScreen, _newScreen;
         private List<GameScreen> _screens;
+        private Song _bgm;
 
         public Image _image;
         public Camera Camera;
@@ -145,6 +148,24 @@ namespace RkoOuttaNowhere.Screens
             this.Content = Content;
             _currentScreen.LoadContent();
             _image.LoadContent();
+
+            //_bgm = Content.Load<Song>("sfx/bgm");
+            //MediaPlayer.IsRepeating = true;
+            //MediaPlayer.Play(_bgm);
+
+            // Load And Play Music.
+            try
+            {
+                SongCollection playlist = new SongCollection();
+                playlist.Add(Content.Load<Song>("sfx/Robert del Naja - the shovel"));
+                playlist.Add(Content.Load<Song>("sfx/Robert del Naja - HS"));
+                playlist.Add(Content.Load<Song>("sfx/Robert del Naja - WS"));
+                playlist.Add(Content.Load<Song>("sfx/Robert del Naja - DT3"));
+                playlist.Add(Content.Load<Song>("sfx/Robert del Naja - BC"));
+                MediaPlayer.IsRepeating = true;
+                MediaPlayer.Play(playlist);
+            }
+            catch (Exception e) { }
         }
 
         /// <summary>
@@ -164,6 +185,7 @@ namespace RkoOuttaNowhere.Screens
         {
             _currentScreen.Update(gameTime);
             Transition(gameTime);
+
         }
 
         /// <summary>

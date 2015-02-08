@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using RkoOuttaNowhere.Gameplay.Units;
 using RkoOuttaNowhere.Gameplay;
+using RkoOuttaNowhere.Screens;
 
 namespace RkoOuttaNowhere.Physics
 {
@@ -92,7 +94,9 @@ namespace RkoOuttaNowhere.Physics
             List<Unit> enemyUnitsCloseToAllyProjectile = new List<Unit>();
             foreach(Projectile p in _allyProjectiles)
             {
-                enemyUnitsCloseToAllyProjectile = _enemyUnits.Where(x => Vector2.DistanceSquared(p.HitBox.Position, x.HitBox.Position) < Math.Max(p.HitBox.RangeThreshold * p.HitBox.RangeThreshold, x.HitBox.RangeThreshold*x.HitBox.RangeThreshold)).ToList();
+                if (!p.IsCollidable) continue;
+
+                enemyUnitsCloseToAllyProjectile = _enemyUnits.Where(x => x.IsCollidable && Vector2.DistanceSquared(p.HitBox.Position, x.HitBox.Position) < Math.Max(p.HitBox.RangeThreshold * p.HitBox.RangeThreshold, x.HitBox.RangeThreshold*x.HitBox.RangeThreshold)).ToList();
 
                 newValue = Vector2.DistanceSquared(p.HitBox.Position, _enemyUnits[0].HitBox.Position);
 
@@ -129,7 +133,9 @@ namespace RkoOuttaNowhere.Physics
             List<Unit> enemyUnitsCloseToAllyUnits = new List<Unit>();
             foreach(Unit u in _allyUnits)
             {
-                enemyUnitsCloseToAllyUnits = _enemyUnits.Where(x => Vector2.DistanceSquared(u.HitBox.Position, x.HitBox.Position) < Math.Max(u.HitBox.RangeThreshold, x.HitBox.RangeThreshold)).ToList();
+                if (!u.IsCollidable) continue;
+
+                enemyUnitsCloseToAllyUnits = _enemyUnits.Where(x => x.IsCollidable && Vector2.DistanceSquared(u.HitBox.Position, x.HitBox.Position) < Math.Max(u.HitBox.RangeThreshold, x.HitBox.RangeThreshold)).ToList();
 
                 foreach(Unit eu in enemyUnitsCloseToAllyUnits)
                 {
@@ -148,7 +154,9 @@ namespace RkoOuttaNowhere.Physics
             List<Projectile> enemyProjectilesCloseToAllyUnits = new List<Projectile>();
             foreach (Unit u in _allyUnits)
             {
-                enemyProjectilesCloseToAllyUnits = _enemyProjectiles.Where(x => Vector2.DistanceSquared(u.HitBox.Position, x.HitBox.Position) < Math.Max(u.HitBox.RangeThreshold, x.HitBox.RangeThreshold)).ToList();
+                if (!u.IsCollidable) continue;
+
+                enemyProjectilesCloseToAllyUnits = _enemyProjectiles.Where(x => x.IsCollidable && Vector2.DistanceSquared(u.HitBox.Position, x.HitBox.Position) < Math.Max(u.HitBox.RangeThreshold, x.HitBox.RangeThreshold)).ToList();
 
                 foreach(Projectile ep in enemyProjectilesCloseToAllyUnits)
                 {
@@ -353,8 +361,11 @@ namespace RkoOuttaNowhere.Physics
 
         public void Update(GameTime gameTime)
         {
+            List<Projectile> projectileRemovalList = new List<Projectile>();
             foreach(Projectile p in _allyProjectiles)
             {
+                if (p.IsActive) p.Update(gameTime);
+
                 if(p.HasGravity)
                 {
                     Vector2 tempVel = new Vector2(p.Velocity.X * p.Speed, p.Velocity.Y * p.Speed);
@@ -363,7 +374,21 @@ namespace RkoOuttaNowhere.Physics
                     tempVel.Normalize();
                     p.Velocity = tempVel;
                 }
+
+                if (p.Position.Y > ScreenManager.Instance.Dimensions.Y)
+                {
+                    p.OnDestroy();
+                    projectileRemovalList.Add(p);
+                    continue;
+                }
             }
+
+            foreach(Projectile p in projectileRemovalList)
+            {
+                _allyProjectiles.Remove(p);
+            }
+            projectileRemovalList.Clear();
+
             foreach(Projectile p in _enemyProjectiles)
             {
                 if (p.HasGravity)
@@ -375,9 +400,12 @@ namespace RkoOuttaNowhere.Physics
             }
         }
 
-        public void clearProjectiles()
+        public void Draw(SpriteBatch spriteBatch)
         {
-            _allyProjectiles.Clear();
+            foreach(Projectile p in _allyProjectiles)
+            {
+                p.Draw(spriteBatch);
+            }
         }
     }
 }

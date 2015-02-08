@@ -156,7 +156,19 @@
     <Content Include="Content\Gameplay\wall_75.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\sfx\Brad Smit &amp; Tom Clayton - Bounce for Me %28Original Mix%29.wav">
+    <Content Include="Content\sfx\Robert del Naja - BC.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sfx\Robert del Naja - DT3.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sfx\Robert del Naja - HS.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sfx\Robert del Naja - the shovel.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sfx\Robert del Naja - WS.wma">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sfx\money.wav" />
@@ -328,6 +340,21 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\sfx\Robert del Naja - BC.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\sfx\Robert del Naja - DT3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\sfx\Robert del Naja - HS.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\sfx\Robert del Naja - the shovel.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\sfx\Robert del Naja - WS.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Gameplay\Projectiles\Fire.cs.orig" />
   </ItemGroup>
   <ItemGroup>

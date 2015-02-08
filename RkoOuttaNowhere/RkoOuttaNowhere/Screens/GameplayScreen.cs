@@ -116,7 +116,12 @@ namespace RkoOuttaNowhere.Screens
                 // Change the screens
                 if(!ScreenManager.Instance.IsTransitioning)
                     ScreenManager.Instance.ChangeScreens(ScreenType.LevelSelect);
-                PhysicsManager.Instance.clearProjectiles();
+            }
+            else if(RKOGame.Instance.getHealth <= 0)
+            {
+                RKOGame.Instance.Reset();
+
+                ScreenManager.Instance.ChangeFast(ScreenType.GameOver);
             }
         }
 
@@ -126,6 +131,7 @@ namespace RkoOuttaNowhere.Screens
             _currentLevel.Draw(spriteBatch);
             _firewall.Draw(spriteBatch);
             _player.Draw(spriteBatch);
+            PhysicsManager.Instance.Draw(spriteBatch);
             _gui.Draw(spriteBatch);
         }
     }
