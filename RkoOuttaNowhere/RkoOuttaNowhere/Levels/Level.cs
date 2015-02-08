@@ -66,6 +66,7 @@ namespace RkoOuttaNowhere.Levels
 
         public void LoadContent(int levelValue)
         {
+            _completed = true;
             _levelValue = levelValue;
             _currentWave = -1;
             _waveTimer = 5000;

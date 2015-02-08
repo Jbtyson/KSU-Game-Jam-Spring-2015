@@ -12,6 +12,7 @@ namespace RkoOuttaNowhere.Screens
         LevelSelect,
         Gameplay,
         Upgrade,
+        Victory,
         GameOver
     }
 }

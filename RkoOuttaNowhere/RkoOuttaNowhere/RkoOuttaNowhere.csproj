@@ -54,6 +54,7 @@
     <Compile Include="Gameplay\Units\UnitType.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\XmlManager.cs" />
+    <Compile Include="Screens\Victory.cs" />
     <Compile Include="Ui\Button.cs" />
     <Compile Include="Ui\GameplayGui.cs" />
     <Compile Include="Ui\Gui.cs" />
@@ -87,7 +88,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\backgrounds\gameplay.png">
+    <Content Include="Content\backgrounds\gameplay0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\backgrounds\gameplay1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\backgrounds\gameplay2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\backgrounds\game_over.png">
@@ -106,6 +113,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\backgrounds\upgrade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\backgrounds\victory.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\enemies\heavyMelee.png">
