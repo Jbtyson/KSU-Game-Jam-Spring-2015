@@ -116,6 +116,7 @@ namespace RkoOuttaNowhere.Screens
                 // Change the screens
                 if(!ScreenManager.Instance.IsTransitioning)
                     ScreenManager.Instance.ChangeScreens(ScreenType.LevelSelect);
+                PhysicsManager.Instance.clearProjectiles();
             }
         }
 

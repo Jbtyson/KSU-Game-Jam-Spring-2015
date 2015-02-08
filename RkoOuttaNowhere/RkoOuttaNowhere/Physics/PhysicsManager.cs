@@ -374,5 +374,10 @@ namespace RkoOuttaNowhere.Physics
                 }
             }
         }
+
+        public void clearProjectiles()
+        {
+            _allyProjectiles.Clear();
+        }
     }
 }

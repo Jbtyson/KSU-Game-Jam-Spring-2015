@@ -73,19 +73,16 @@ namespace RkoOuttaNowhere.Gameplay
                 }
                 delay++;
             }
-            try
-            {
+
                 foreach (Projectile l in _projectiles)
                 {
                     if (l.Position.Y > ScreenManager.Instance.Dimensions.Y)
                         l.IsActive = false;
                     if (l.IsActive)
                         l.Update(gametime);
-                    else
-                        _projectiles.Remove(l);
+                    //else
+                       // _projectiles.Remove(l);
                 }
-            }
-            catch (Exception e) { };
             _image.Position = _position;
             _image.Rotation = (float)Math.Atan2(_position.Y - InputManager.Instance.MousePosition.Y, _position.X - InputManager.Instance.MousePosition.X);
 
@@ -135,7 +132,10 @@ namespace RkoOuttaNowhere.Gameplay
 
         public Upgrades.ammunition Ammo { get { return _ammo; } set { _ammo = value; } }
 
-
+        public void clearProjectiles()
+        {
+            _projectiles.Clear();
+        }
 
         
 
