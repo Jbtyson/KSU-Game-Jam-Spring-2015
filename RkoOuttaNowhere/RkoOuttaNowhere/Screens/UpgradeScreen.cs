@@ -12,6 +12,7 @@ using RkoOuttaNowhere.Input;
 using System.IO;
 using RkoOuttaNowhere.Gameplay;
 using RkoOuttaNowhere.Ui;
+using RkoOuttaNowhere.Images;
 
 namespace RkoOuttaNowhere.Screens
 {
@@ -19,12 +20,17 @@ namespace RkoOuttaNowhere.Screens
     {
 
         private Button damageMod, healthMod, moneyMod;
+
+        private Image _tip, _money;
+
         public UpgradeScreen()
             : base()
         {
             damageMod = new Button();
             healthMod = new Button();
             moneyMod = new Button();
+            _tip = new Image();
+            _money = new Image();
         }
 
         public override void LoadContent()
@@ -35,6 +41,17 @@ namespace RkoOuttaNowhere.Screens
             damageMod.LoadContent("ui/upgrades/damage", new Vector2(200.0f, 350.0f), upgradeDamage);
             healthMod.LoadContent("ui/upgrades/health", new Vector2(200.0f, 450.0f), upgradeHealth);
             moneyMod.LoadContent("ui/upgrades/money", new Vector2(200.0f, 550.0f), upgradeMoney);
+
+            _tip.Text = "Press Space to go back";
+            _tip.Position = new Vector2(5, 5);
+            _tip.Path = "transparent";
+            _tip.LoadContent();
+
+            _money.Text = RKOGame.Instance.getCurrency.ToString();
+            _money.Position = new Vector2(800, 5);
+            _money.Scale = new Vector2(2, 2);
+            _money.Path = "transparent";
+            _money.LoadContent();
         }
 
        
@@ -45,22 +62,22 @@ namespace RkoOuttaNowhere.Screens
             damageMod.UnloadContent();
             healthMod.UnloadContent();
             moneyMod.UnloadContent();
+            _tip.UnloadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (InputManager.Instance.KeyPressed(Keys.G))
+            if (InputManager.Instance.KeyPressed(Keys.Space))
             {
-                ScreenManager.Instance.ChangeScreens(ScreenType.Gameplay);
-            }
-            else if (InputManager.Instance.KeyPressed(Keys.L))
-            {
-                ScreenManager.Instance.ChangeScreens(ScreenType.LevelSelect);
+                ScreenManager.Instance.ChangeScreens(RKOGame.Instance.LastScreen);
             }
             damageMod.Update(gameTime);
             healthMod.Update(gameTime);
             moneyMod.Update(gameTime);
+            _tip.Update(gameTime);
+            _money.Text = RKOGame.Instance.getCurrency.ToString();
+            _money.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -69,6 +86,8 @@ namespace RkoOuttaNowhere.Screens
             damageMod.Draw(spriteBatch);
             healthMod.Draw(spriteBatch);
             moneyMod.Draw(spriteBatch);
+            _tip.Draw(spriteBatch);
+            _money.RedrawText(spriteBatch, Color.White);
         }
 
 

@@ -106,7 +106,7 @@ namespace RkoOuttaNowhere.Levels
                             _waves[_currentWave].AddUnit(UnitFactory.CreateStrongRanged());
                         break;
                     default:
-                        throw new ArgumentException("you cant spell for shit");
+                        throw new ArgumentException("check spelling of an enemy type");
                 }
             }
             _currentWave = -1;
