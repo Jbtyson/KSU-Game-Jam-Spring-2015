@@ -81,6 +81,7 @@ namespace RkoOuttaNowhere.Screens
             _screens.Add(new LevelSelectScreen());
             _screens.Add(new GameplayScreen());
             _screens.Add(new UpgradeScreen());
+            _screens.Add(new Vitcory());
             _screens.Add(new GameOverScreen());
             // Set the current screen to the splash screen
             _currentScreen = _screens[(int)ScreenType.Splash];
@@ -92,6 +93,7 @@ namespace RkoOuttaNowhere.Screens
             _screens[(int)ScreenType.LevelSelect].LoadContent();
             _screens[(int)ScreenType.Gameplay].LoadContent();
             _screens[(int)ScreenType.Upgrade].LoadContent();
+            _screens[(int)ScreenType.Victory].LoadContent();
             _screens[(int)ScreenType.GameOver].LoadContent();
         }
 

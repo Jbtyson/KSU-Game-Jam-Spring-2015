@@ -20,6 +20,8 @@ namespace RkoOuttaNowhere.Screens
                     _currentLevel,
                     _nextLevelProgression;
 
+        private bool _guiLoaded;
+
         public LevelSelectScreen()
             : base()
         {
@@ -38,7 +40,11 @@ namespace RkoOuttaNowhere.Screens
 
             // Load all of the nodes (buttons)
             List<Point> points = LoadFromFile();
-            _gui.LoadContent();
+            if (!_guiLoaded)
+            {
+                _gui.LoadContent();
+                _guiLoaded = true;
+            }
             _gui.LoadNodes(points, new Action(HandleNodeClick), "ui/level_select/Node" + (_currentWorld + 1));
 
             _nextLevelProgression = RKOGame.Instance.getHighestCompletedLevel + 1;
@@ -61,6 +67,15 @@ namespace RkoOuttaNowhere.Screens
                 RKOGame.Instance.LastScreen = ScreenType.LevelSelect;
                 ScreenManager.Instance.ChangeScreens(ScreenType.Upgrade);
             }
+            else if (InputManager.Instance.KeyPressed(Keys.F10))
+            {
+                RKOGame.Instance.LastScreen = ScreenType.LevelSelect;
+                ScreenManager.Instance.ChangeScreens(ScreenType.Victory);
+            }
+            else if (InputManager.Instance.KeyPressed(Keys.F9))
+            {
+                RKOGame.Instance.AddMoney(1000);
+            }
 
             if (_nextLevelProgression == RKOGame.Instance.getHighestCompletedLevel)
             {
@@ -70,7 +85,7 @@ namespace RkoOuttaNowhere.Screens
                     NextWorld();
                     if (_currentWorld == 3)
                     {
-                        ScreenManager.Instance.ChangeScreens(ScreenType.Title);
+                        ScreenManager.Instance.ChangeScreens(ScreenType.Victory);
                     }
                 }
                 _gui.AnimateButton(_nextLevelProgression % 10);
@@ -83,7 +98,7 @@ namespace RkoOuttaNowhere.Screens
         {
             RKOGame.Instance.getCurrentWorld++;
             if (RKOGame.Instance.getCurrentWorld == 3)
-                ScreenManager.Instance.ChangeScreens(ScreenType.Title);
+                ScreenManager.Instance.ChangeFast(ScreenType.Victory);
             else
             {
                 _backgroundImage = new Images.Image();

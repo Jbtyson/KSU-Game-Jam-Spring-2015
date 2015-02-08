@@ -22,6 +22,7 @@ namespace RkoOuttaNowhere.Ui
         {
             _nodes = new List<Button>();
             _tip = new Image();
+            
         }
 
         public override void LoadContent()

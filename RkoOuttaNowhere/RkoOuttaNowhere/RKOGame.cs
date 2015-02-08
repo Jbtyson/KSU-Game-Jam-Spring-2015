@@ -55,7 +55,7 @@ namespace RkoOuttaNowhere
         /// <param name="curr"> starting curency </param>
         private RKOGame()
         {
-            _currency = 10000;
+            _currency = 100;
             _health = 100;
             _currentLevel = 0;
             _currentWave = 0;
@@ -72,6 +72,9 @@ namespace RkoOuttaNowhere
         public void Reset()
         {
             _instance = null;
+            Upgrade.MoneyBoost = 0.0f;
+            Upgrade.HealthIncrease = 0;
+            Upgrade.MoneyBoost = 0.0f;
         }
 
         public void AddMoney(int value)

@@ -19,7 +19,7 @@ namespace RkoOuttaNowhere.Screens
 {
     public class GameplayScreen : GameScreen
     {
-        
+        private int _currentWorld;
         private Level _currentLevel;
         private List<Level> _levels;
         private Firewall _firewall;
@@ -38,7 +38,10 @@ namespace RkoOuttaNowhere.Screens
         public override void LoadContent()
         {
             base.LoadContent();
-            _backgroundImage.Path = "backgrounds/gameplay";
+
+            _currentWorld = RKOGame.Instance.getCurrentWorld;
+
+            _backgroundImage.Path = "backgrounds/gameplay" + RKOGame.Instance.getCurrentWorld;
             _backgroundImage.LoadContent();
             _player.LoadContent();
             _firewall.LoadContent();
@@ -75,6 +78,11 @@ namespace RkoOuttaNowhere.Screens
 
         public override void Update(GameTime gametime)
         {
+            if (RKOGame.Instance.getCurrentWorld != _currentWorld)
+            {
+                //ChangeBackground();
+            }
+
             base.Update(gametime);
             // Process input
             if (InputManager.Instance.KeyPressed(Keys.U))
@@ -131,6 +139,13 @@ namespace RkoOuttaNowhere.Screens
             _player.Draw(spriteBatch);
             PhysicsManager.Instance.Draw(spriteBatch);
             _gui.Draw(spriteBatch);
+        }
+
+        public void ChangeBackground()
+        {
+            _backgroundImage.UnloadContent();
+            _backgroundImage.Path = "backgrounds/gameplay" + RKOGame.Instance.getCurrentWorld;
+            _backgroundImage.LoadContent();
         }
     }
 }
