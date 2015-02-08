@@ -15,8 +15,6 @@ namespace RkoOuttaNowhere.Gameplay
 {
     public class Player : GameObject
     {
-
-        private List<Projectile> _projectiles;
         private int damageModifier, delay = 0;
         private float speedModifier;
         private Upgrades.ammunition _ammo = Upgrades.ammunition.Fire;
@@ -29,10 +27,8 @@ namespace RkoOuttaNowhere.Gameplay
             _position = Vector2.Zero;
             _stand = new Image();
             _ammo = Upgrades.ammunition.Fire;
-            _projectiles = new List<Projectile>();
             damageModifier = 0;
             speedModifier = 1;
-
         }
 
         public override void LoadContent() 
@@ -53,10 +49,6 @@ namespace RkoOuttaNowhere.Gameplay
         {
             base.UnloadContent();
 
-            foreach(Projectile l in _projectiles)
-            {
-                l.UnloadContent();
-            }
             _stand.UnloadContent();
         }
 
@@ -68,24 +60,11 @@ namespace RkoOuttaNowhere.Gameplay
             {
                 if (delay%20 == 0)
                 {
-                    _projectiles.Add(ProjectileFactory.Shoot(_position, damageModifier, _ammo, true));
+                    ProjectileFactory.Shoot(_position, damageModifier, _ammo, true);
                     delay = 0;
                 }
                 delay++;
             }
-            try
-            {
-                foreach (Projectile l in _projectiles)
-                {
-                    if (l.Position.Y > ScreenManager.Instance.Dimensions.Y)
-                        l.IsActive = false;
-                    if (l.IsActive)
-                        l.Update(gametime);
-                    else
-                        _projectiles.Remove(l);
-                }
-            }
-            catch (Exception e) { };
             _image.Position = _position;
             _image.Rotation = (float)Math.Atan2(_position.Y - InputManager.Instance.MousePosition.Y, _position.X - InputManager.Instance.MousePosition.X);
 
@@ -98,11 +77,6 @@ namespace RkoOuttaNowhere.Gameplay
             base.Draw(spritebatch);
 
             _image.Draw(spritebatch);
-            foreach (Projectile l in _projectiles)
-            {
-                if(l.IsActive)
-                    l.Draw(spritebatch);
-            }
         }
         /*
         /// <summary>

@@ -69,6 +69,11 @@ namespace RkoOuttaNowhere
         public int getCurrentWorld { get { return _currentWorld; } set { _currentWorld = value; } }
         public int getHighestCompletedLevel { get { return _highestCompletedLevel; } set { _highestCompletedLevel = value; } }
 
+        public void Reset()
+        {
+            _instance = null;
+        }
+
         public void AddMoney(int value)
         {
             _currency += (int)Math.Ceiling(value * Upgrade.MoneyBoost);
