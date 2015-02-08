@@ -10,8 +10,11 @@ namespace RkoOuttaNowhere.Gameplay
         private static float _damageBoost   = 1.0f,
                              _moneyBoost    = 1.0f,
                              _moneyRate     = 0,
-                             _healthIncrease   = 0,
-                             _healthRate    = 0;
+                             _healthIncrease= 0,
+                             _healthRate    = 0,
+                             _gun           = 10,
+                             _fire          = 15,
+                             _laser         = 20;
 
         public static float HealthRate
         {
@@ -41,6 +44,24 @@ namespace RkoOuttaNowhere.Gameplay
         {
             get { return _damageBoost; }
             set { _damageBoost = value; }
+        }
+
+        public static float Gun
+        {
+            get { return _gun; }
+            set { _gun = value; }
+        }
+
+        public static float Fire
+        {
+            get { return _fire; }
+            set { _fire = value; }
+        }
+
+        public static float Laser
+        {
+            get { return _laser; }
+            set { _laser = value; }
         }
     }
 }

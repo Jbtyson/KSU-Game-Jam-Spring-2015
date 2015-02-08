@@ -7,13 +7,6 @@ namespace RkoOuttaNowhere.Gameplay
 {
     public class Upgrades
     {
-        public enum upgrades
-        {
-            None = 0,
-            Damage = 5,
-            Speed = 2
-        };
-
         public enum ammunition
         {
             Gun,

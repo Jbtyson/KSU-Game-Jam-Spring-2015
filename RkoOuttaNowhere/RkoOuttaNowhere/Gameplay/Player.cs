@@ -19,7 +19,7 @@ namespace RkoOuttaNowhere.Gameplay
         private List<Projectile> _projectiles;
         private int damageModifier, delay = 0;
         private float speedModifier;
-        private Upgrades.ammunition ammo = Upgrades.ammunition.Fire;
+        private Upgrades.ammunition _ammo = Upgrades.ammunition.Fire;
 
         private Image _stand;
 
@@ -28,9 +28,10 @@ namespace RkoOuttaNowhere.Gameplay
         {
             _position = Vector2.Zero;
             _stand = new Image();
+            _ammo = Upgrades.ammunition.Fire;
             _projectiles = new List<Projectile>();
             damageModifier = 0;
-            speedModifier = 20;
+            speedModifier = 1;
 
         }
 
@@ -67,17 +68,24 @@ namespace RkoOuttaNowhere.Gameplay
             {
                 if (delay%20 == 0)
                 {
-                    _projectiles.Add(ProjectileFactory.Shoot(_position, damageModifier, ammo, true));
+                    _projectiles.Add(ProjectileFactory.Shoot(_position, damageModifier, _ammo, true));
                     delay = 0;
                 }
                 delay++;
             }
-
-            foreach(Projectile l in _projectiles)
+            try
             {
-                if(l.IsActive)
-                    l.Update(gametime);
+                foreach (Projectile l in _projectiles)
+                {
+                    if (l.Position.Y > ScreenManager.Instance.Dimensions.Y)
+                        l.IsActive = false;
+                    if (l.IsActive)
+                        l.Update(gametime);
+                    else
+                        _projectiles.Remove(l);
+                }
             }
+            catch (Exception e) { };
             _image.Position = _position;
             _image.Rotation = (float)Math.Atan2(_position.Y - InputManager.Instance.MousePosition.Y, _position.X - InputManager.Instance.MousePosition.X);
 
@@ -96,7 +104,7 @@ namespace RkoOuttaNowhere.Gameplay
                     l.Draw(spritebatch);
             }
         }
-
+        /*
         /// <summary>
         ///  checks if laser hit enemy unit
         /// </summary>
@@ -123,21 +131,11 @@ namespace RkoOuttaNowhere.Gameplay
                 }
             }
             catch (Exception e) { };
-        }
+        }*/
 
-        public void upgradeWeapon(Upgrades.ammunition x)
-        {
-            ammo = x;
-        }
-        public void upgradeDamage(Upgrades.upgrades x)
-        {
-            damageModifier += (int)x;
-        }
+        public Upgrades.ammunition Ammo { get { return _ammo; } set { _ammo = value; } }
 
-        public void upgradeAttackSpeed(Upgrades.upgrades x)
-        {
-            speedModifier -= (float)x;
-        }
+
 
         
 

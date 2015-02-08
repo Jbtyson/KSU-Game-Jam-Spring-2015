@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 using RkoOuttaNowhere.Images;
 using RkoOuttaNowhere.Input;
 using RkoOuttaNowhere.Ui;
+using RkoOuttaNowhere.Gameplay;
 
 namespace RkoOuttaNowhere.Screens
 {
@@ -24,6 +25,7 @@ namespace RkoOuttaNowhere.Screens
         protected ContentManager _content;
         protected Image _backgroundImage;
         protected Gui _gui;
+        protected Player _player;
 
         /// <summary>
         /// Default constructor
@@ -31,6 +33,7 @@ namespace RkoOuttaNowhere.Screens
         public GameScreen()
         {
             _backgroundImage = new Image();
+            _player = new Player();
         }
 
         public virtual void LoadContent()

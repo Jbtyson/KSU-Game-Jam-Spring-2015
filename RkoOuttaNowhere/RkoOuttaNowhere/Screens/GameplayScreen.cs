@@ -19,7 +19,7 @@ namespace RkoOuttaNowhere.Screens
 {
     public class GameplayScreen : GameScreen
     {
-        private Player _player;
+        
         private Level _currentLevel;
         private List<Level> _levels;
         private Firewall _firewall;
@@ -86,6 +86,7 @@ namespace RkoOuttaNowhere.Screens
                 ScreenManager.Instance.ChangeFast(ScreenType.GameOver);
             }
             _player.Update(gametime);
+
             /* old Collision Detection
             foreach (Wave w in _currentLevel.Waves)
                 _player.laserHitEnemy(w.Units);

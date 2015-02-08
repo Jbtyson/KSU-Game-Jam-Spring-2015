@@ -96,9 +96,9 @@ namespace RkoOuttaNowhere.Gameplay.Units
             RKOGame.Instance.AddMoney(_baseMoney);
         }
 
-        public bool Damage(int damage)
+        public bool Damage(float damage)
         {
-            this.Health -= damage;
+            this.Health -= (int)damage;
             if (this.Health <= 0)
             {
                 this.OnDestroy();

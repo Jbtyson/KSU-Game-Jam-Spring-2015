@@ -11,14 +11,13 @@ namespace RkoOuttaNowhere.Gameplay.Projectiles
 {
      class Fire : Projectile
     {
-        public Fire(Vector2 start, Vector2 dest, int dmg)
+        public Fire(Vector2 start, Vector2 dest, float dmg)
         {
             _position = start;
             _velocity = dest - start;
             if (_velocity != Vector2.Zero)
                 _velocity.Normalize();
             _image = new Image();
-            Damage = dmg;
         }
 
         public void LoadContent(bool isAlly = false) 

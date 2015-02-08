@@ -64,7 +64,7 @@ namespace RkoOuttaNowhere
         }
 
         public int getCurrency { get { return _currency; } set { _currency += value; } }
-        public int getHealth { get { return _health; } set { _health = value; } }
+        public int getHealth { get { return (_health + (int)Upgrade.HealthIncrease); } set { _health = value; } }
         public int getCurrentLevel { get { return _currentLevel; } set { _currentLevel = value; } }
         public int getCurrentWorld { get { return _currentWorld; } set { _currentWorld = value; } }
         public int getHighestCompletedLevel { get { return _highestCompletedLevel; } set { _highestCompletedLevel = value; } }

@@ -32,14 +32,14 @@ namespace RkoOuttaNowhere.Gameplay
 
         public static Projectile CreateFireShot(Vector2 _position, int damageMod, bool isAlly = false)
         {
-            Fire f = new Fire(_position, new Vector2(InputManager.Instance.MousePosition.X, InputManager.Instance.MousePosition.Y), FIRE_DAMAGE + damageMod);
+            Fire f = new Fire(_position, new Vector2(InputManager.Instance.MousePosition.X, InputManager.Instance.MousePosition.Y), FIRE_DAMAGE * Upgrade.DamageBoost);
             f.LoadContent(isAlly);
             return f;
         }
 
         public static Projectile CreateLaserShot(Vector2 _position, int damageMod, bool isAlly = false)
         {
-            Laser l = new Laser(_position, new Vector2(InputManager.Instance.MousePosition.X, InputManager.Instance.MousePosition.Y), LASER_DAMAGE + damageMod);
+            Laser l = new Laser(_position, new Vector2(InputManager.Instance.MousePosition.X, InputManager.Instance.MousePosition.Y), LASER_DAMAGE * Upgrade.DamageBoost);
             l.LoadContent(isAlly);
             return l;
         }
