@@ -72,6 +72,10 @@ namespace RkoOuttaNowhere.Screens
                 RKOGame.Instance.LastScreen = ScreenType.LevelSelect;
                 ScreenManager.Instance.ChangeScreens(ScreenType.Victory);
             }
+            else if (InputManager.Instance.KeyPressed(Keys.F9))
+            {
+                RKOGame.Instance.AddMoney(1000);
+            }
 
             if (_nextLevelProgression == RKOGame.Instance.getHighestCompletedLevel)
             {
