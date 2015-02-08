@@ -85,11 +85,11 @@ namespace RkoOuttaNowhere.Levels
                         for (int i = 0; i < num; i++)
                             _waves[_currentWave].AddUnit(UnitFactory.CreateWeakMelee());
                         break;
-                    case "MediumMelee":
+                    case "Trojan":
                         for (int i = 0; i < num; i++)
                             _waves[_currentWave].AddUnit(UnitFactory.CreateMediumMelee());
                         break;
-                    case "StrongMelee":
+                    case "HeavyMelee":
                         for (int i = 0; i < num; i++)
                             _waves[_currentWave].AddUnit(UnitFactory.CreateStrongMelee());
                         break;
@@ -104,6 +104,14 @@ namespace RkoOuttaNowhere.Levels
                     case "StrongRanged":
                         for (int i = 0; i < num; i++)
                             _waves[_currentWave].AddUnit(UnitFactory.CreateStrongRanged());
+                        break;
+                    case "WeakAerialMelee":
+                        for (int i = 0; i < num; i++)
+                            _waves[_currentWave].AddUnit(UnitFactory.CreateWeakAerialMelee());
+                        break;
+                    case "WeakAerialRanged":
+                        for (int i = 0; i < num; i++)
+                            _waves[_currentWave].AddUnit(UnitFactory.CreateWeakAerialRanged());
                         break;
                     default:
                         throw new ArgumentException("you cant spell for shit");

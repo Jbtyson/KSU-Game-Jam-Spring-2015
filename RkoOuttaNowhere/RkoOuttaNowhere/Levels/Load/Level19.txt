@@ -1,4 +1,7 @@
-﻿1
+﻿3
 1
 ---
-WeakMelee 1
+WeakMelee 50
+WeakAerialMelee 50
+WeakRanged 30
+WeakAerialRanged 30

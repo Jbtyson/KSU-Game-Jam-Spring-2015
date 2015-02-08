@@ -68,5 +68,19 @@ namespace RkoOuttaNowhere.Gameplay.Units
             u.LoadContent("testUnit2", Vector2.Zero, MEDIUM_SPEED, STRONG_HEALTH, STRONG_MONEY, STRONG_DPS, Behaviour.BasicMove);
             return u;
         }
+
+        public static Unit CreateWeakAerialMelee()
+        {
+            Unit u = new Unit();
+            u.LoadContent("enemies/weakAerialMelee", Vector2.Zero, SLOW_SPEED, WEAK_HEALTH, WEAK_MONEY, WEAK_DPS, Behaviour.BasicMove);
+            return u;
+        }
+
+        public static Unit CreateWeakAerialRanged()
+        {
+            Unit u = new Unit();
+            u.LoadContent("enemies/weakAerialRange", Vector2.Zero, SLOW_SPEED, WEAK_HEALTH, WEAK_MONEY, WEAK_DPS, Behaviour.BasicMove);
+            return u;
+        }
     }
 }

@@ -1,13 +1,21 @@
 ﻿3
-4
+7
 ---
-WeakMelee 6
+WeakMelee 500
 ---
-WeakMelee 9
-WeakRanged 3
+WeakRanged 500
 ---
-WeakMelee 6
-WeakRanged 6
+WeakAerialMelee 500
 ---
-WeakMelee 9
-WeakRanged 6
+WeakAerialRanged 500
+---
+Trojan 50
+---
+HeavyMelee 50
+---
+WeakMelee 500
+WeakRanged 500
+WeakAerialMelee 500
+WeakAerialRanged 500
+Trojan 50
+HeavyMelee 50

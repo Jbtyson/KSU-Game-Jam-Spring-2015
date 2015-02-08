@@ -1,13 +1,8 @@
 ﻿3
-4
+3
 ---
-WeakMelee 6
+WeakRanged 10
 ---
-WeakMelee 9
-WeakRanged 3
+WeakRanged 15
 ---
-WeakMelee 6
-WeakRanged 6
----
-WeakMelee 9
-WeakRanged 6
+WeakRanged 25
