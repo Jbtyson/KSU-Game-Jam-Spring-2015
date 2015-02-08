@@ -63,7 +63,7 @@ namespace RkoOuttaNowhere
             _currentWorld = 0;
         }
 
-        public int getCurrency { get { return _currency; } set { _currency += value; } }
+        public int getCurrency { get { return _currency; } set { _currency = value; } }
         public int getHealth { get { return _health; } set { _health = value; } }
         public int getCurrentLevel { get { return _currentLevel; } set { _currentLevel = value; } }
         public int getCurrentWorld { get { return _currentWorld; } set { _currentWorld = value; } }
