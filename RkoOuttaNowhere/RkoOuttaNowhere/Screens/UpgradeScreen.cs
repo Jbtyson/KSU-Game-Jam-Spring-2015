@@ -84,7 +84,7 @@ namespace RkoOuttaNowhere.Screens
             if (RKOGame.Instance.getCurrency >= 200)
             {
                 Upgrade.DamageBoost += .25f;
-                RKOGame.Instance.getCurrency -= 200;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 200;
             }
         }
 
@@ -94,7 +94,7 @@ namespace RkoOuttaNowhere.Screens
             {
                 Upgrade.HealthIncrease += 25;
                 RKOGame.Instance.getHealth += (int)Upgrade.HealthIncrease;
-                RKOGame.Instance.getCurrency -= 500;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 500;
             }
         }
 
@@ -103,7 +103,7 @@ namespace RkoOuttaNowhere.Screens
             if (RKOGame.Instance.getCurrency >= 1000)
             {
                 Upgrade.MoneyBoost += .25f;
-                RKOGame.Instance.getCurrency -= 1000;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 1000;
             }
         }
 
