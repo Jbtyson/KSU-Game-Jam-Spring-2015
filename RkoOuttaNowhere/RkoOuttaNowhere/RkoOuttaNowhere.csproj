@@ -171,6 +171,7 @@
     <Content Include="Content\sfx\Robert del Naja - WS.wma">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\sfx\money.wav" />
     <Content Include="Content\testUnit2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

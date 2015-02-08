@@ -7,16 +7,23 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 using RkoOuttaNowhere.Input;
 using System.IO;
 using RkoOuttaNowhere.Gameplay;
 using RkoOuttaNowhere.Ui;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace RkoOuttaNowhere.Screens
 {
     public class UpgradeScreen : GameScreen
     {
+
+        SoundEffect soundEngine;
+        SoundEffectInstance soundEngineInstance;
+        SoundEffect soundHyperspaceActivation;
 
         private Button damageMod, healthMod, moneyMod;
         public UpgradeScreen()
@@ -74,17 +81,30 @@ namespace RkoOuttaNowhere.Screens
 
         private void upgradeDamage(Object o, EventArgs e)
         {
-            Upgrade.DamageBoost += .25f;
+            if (RKOGame.Instance.getCurrency >= 200)
+            {
+                Upgrade.DamageBoost += .25f;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 200;
+            }
         }
 
         private void upgradeHealth(Object o, EventArgs e)
         {
-            Upgrade.HealthIncrease += 25;
+            if (RKOGame.Instance.getCurrency >= 500)
+            {
+                Upgrade.HealthIncrease += 25;
+                RKOGame.Instance.getHealth += (int)Upgrade.HealthIncrease;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 500;
+            }
         }
 
         private void upgradeMoney(Object o, EventArgs e)
         {
-            Upgrade.MoneyBoost += .25f;
+            if (RKOGame.Instance.getCurrency >= 1000)
+            {
+                Upgrade.MoneyBoost += .25f;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 1000;
+            }
         }
 
 
