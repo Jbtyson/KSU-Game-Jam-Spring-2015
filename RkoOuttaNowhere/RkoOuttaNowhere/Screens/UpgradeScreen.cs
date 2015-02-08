@@ -90,21 +90,11 @@ namespace RkoOuttaNowhere.Screens
 
         private void upgradeHealth(Object o, EventArgs e)
         {
-            //if (RKOGame.Instance.getCurrency >= 500)
+            if (RKOGame.Instance.getCurrency >= 500)
             {
                 Upgrade.HealthIncrease += 25;
                 RKOGame.Instance.getHealth += (int)Upgrade.HealthIncrease;
                 RKOGame.Instance.getCurrency -= 500;
-                try
-                {
-                    SoundEffect sf = new SoundEffect();
-                    ContentManager temp = this._content;
-                    temp.Load<SoundEffect>("sfx/money").Play();
-                    SongCollection playlist = new SongCollection();
-                    playlist.Add(_content.Load<Song>("sfx/money"));
-                    MediaPlayer.Play(playlist);
-                }
-                catch (Exception f) { }
             }
         }
 
