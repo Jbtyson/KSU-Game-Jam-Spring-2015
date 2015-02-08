@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 using RkoOuttaNowhere.Input;
 using System.IO;
@@ -14,14 +15,21 @@ using RkoOuttaNowhere.Gameplay;
 using RkoOuttaNowhere.Ui;
 using RkoOuttaNowhere.Images;
 
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
+
 namespace RkoOuttaNowhere.Screens
 {
     public class UpgradeScreen : GameScreen
     {
 
+        SoundEffect soundEngine;
+        SoundEffectInstance soundEngineInstance;
+        SoundEffect soundHyperspaceActivation;
+
         private Button damageMod, healthMod, moneyMod;
 
-        private Image _tip, _money;
+        private Image _tip, _money, _moneyIcon;
 
         public UpgradeScreen()
             : base()
@@ -52,6 +60,11 @@ namespace RkoOuttaNowhere.Screens
             _money.Scale = new Vector2(2, 2);
             _money.Path = "transparent";
             _money.LoadContent();
+
+            _moneyIcon = new Image();
+            _moneyIcon.Path = "ui/gameplay/money";
+            _moneyIcon.Position = new Vector2(700, 5);
+            _moneyIcon.LoadContent();
         }
 
        
@@ -63,6 +76,8 @@ namespace RkoOuttaNowhere.Screens
             healthMod.UnloadContent();
             moneyMod.UnloadContent();
             _tip.UnloadContent();
+            _money.UnloadContent();
+            _moneyIcon.UnloadContent();
         }
 
         public override void Update(GameTime gameTime)
@@ -78,6 +93,7 @@ namespace RkoOuttaNowhere.Screens
             _tip.Update(gameTime);
             _money.Text = RKOGame.Instance.getCurrency.ToString();
             _money.Update(gameTime);
+            _moneyIcon.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -88,22 +104,36 @@ namespace RkoOuttaNowhere.Screens
             moneyMod.Draw(spriteBatch);
             _tip.Draw(spriteBatch);
             _money.RedrawText(spriteBatch, Color.White);
+            _moneyIcon.Draw(spriteBatch);
         }
 
 
         private void upgradeDamage(Object o, EventArgs e)
         {
-            Upgrade.DamageBoost += .25f;
+            if (RKOGame.Instance.getCurrency >= 200)
+            {
+                Upgrade.DamageBoost += .25f;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 200;
+            }
         }
 
         private void upgradeHealth(Object o, EventArgs e)
         {
-            Upgrade.HealthIncrease += 25;
+            if (RKOGame.Instance.getCurrency >= 500)
+            {
+                Upgrade.HealthIncrease += 25;
+                RKOGame.Instance.getHealth += (int)Upgrade.HealthIncrease;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 500;
+            }
         }
 
         private void upgradeMoney(Object o, EventArgs e)
         {
-            Upgrade.MoneyBoost += .25f;
+            if (RKOGame.Instance.getCurrency >= 1000)
+            {
+                Upgrade.MoneyBoost += .25f;
+                RKOGame.Instance.getCurrency = RKOGame.Instance.getCurrency - 1000;
+            }
         }
 
 

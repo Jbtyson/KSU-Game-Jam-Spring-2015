@@ -109,8 +109,6 @@ namespace RkoOuttaNowhere.Gameplay
 
         public Upgrades.ammunition Ammo { get { return _ammo; } set { _ammo = value; } }
 
-
-
         
 
     
