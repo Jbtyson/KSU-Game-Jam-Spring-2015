@@ -6,6 +6,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using RkoOuttaNowhere.Images;
+
 namespace RkoOuttaNowhere.Ui
 {
     public class LevelSelectGui : Gui
@@ -13,21 +15,29 @@ namespace RkoOuttaNowhere.Ui
         private List<Button> _nodes;
         private Action _nodeHandler;
         private int _currentLevel;
+        private Image _tip;
 
         public LevelSelectGui()
             : base()
         {
             _nodes = new List<Button>();
+            _tip = new Image();
         }
 
         public override void LoadContent()
         {
             base.LoadContent();
+
+            _tip.Text = "Press U to go to upgrades, or select a level.";
+            _tip.Position = new Vector2(5, 5);
+            _tip.Path = "transparent";
+            _tip.LoadContent();
         }
 
         public override void UnloadContent()
         {
             base.UnloadContent();
+            _tip.UnloadContent();
         }
 
         public override void Update(GameTime gameTime)
@@ -36,6 +46,8 @@ namespace RkoOuttaNowhere.Ui
 
             foreach (Button b in _nodes)
                 b.Update(gameTime);
+
+            _tip.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -44,6 +56,8 @@ namespace RkoOuttaNowhere.Ui
 
             foreach (Button b in _nodes)
                 b.Draw(spriteBatch);
+
+            _tip.Draw(spriteBatch);
         }
 
         public override void LoadNodes(List<Point> points, Action handler, string path)

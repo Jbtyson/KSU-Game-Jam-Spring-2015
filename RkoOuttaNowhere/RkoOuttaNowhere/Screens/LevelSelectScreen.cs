@@ -58,6 +58,7 @@ namespace RkoOuttaNowhere.Screens
 
             if (InputManager.Instance.KeyPressed(Keys.U))
             {
+                RKOGame.Instance.LastScreen = ScreenType.LevelSelect;
                 ScreenManager.Instance.ChangeScreens(ScreenType.Upgrade);
             }
 

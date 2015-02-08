@@ -79,12 +79,10 @@ namespace RkoOuttaNowhere.Screens
             // Process input
             if (InputManager.Instance.KeyPressed(Keys.U))
             {
+                RKOGame.Instance.LastScreen = ScreenType.Gameplay;
                 ScreenManager.Instance.ChangeScreens(ScreenType.Upgrade);
             }
-            else if (InputManager.Instance.KeyPressed(Keys.X))
-            {
-                ScreenManager.Instance.ChangeFast(ScreenType.GameOver);
-            }
+
             _player.Update(gametime);
 
             /* old Collision Detection
@@ -120,7 +118,7 @@ namespace RkoOuttaNowhere.Screens
             else if(RKOGame.Instance.getHealth <= 0)
             {
                 RKOGame.Instance.Reset();
-
+                
                 ScreenManager.Instance.ChangeFast(ScreenType.GameOver);
             }
         }
