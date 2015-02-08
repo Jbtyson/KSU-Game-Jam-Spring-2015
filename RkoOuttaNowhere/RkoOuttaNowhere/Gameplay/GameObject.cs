@@ -34,6 +34,12 @@ namespace RkoOuttaNowhere.Gameplay
             set { _isActive = value; }
         }
 
+        public bool IsCollidable
+        {
+            get { return _isCollidable; }
+            set { _isCollidable = value; }
+        }
+
         public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
 
         public bool HasGravity { get { return _hasGravity; } set { _hasGravity = value; } }
@@ -45,6 +51,7 @@ namespace RkoOuttaNowhere.Gameplay
             _position = _velocity = Vector2.Zero;
             _image = new Image();
             _isVisible = _isActive = true;
+            _isCollidable = true;
         }
 
         public virtual void LoadContent()

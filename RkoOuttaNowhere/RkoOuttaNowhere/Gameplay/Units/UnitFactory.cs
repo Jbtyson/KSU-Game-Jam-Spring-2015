@@ -22,46 +22,50 @@ namespace RkoOuttaNowhere.Gameplay.Units
         public const int WEAK_MONEY     = 5;
         public const int MEDIUM_MONEY   = 10;
         public const int STRONG_MONEY   = 20;
+        //DPS
+        public const int WEAK_DPS = 1;
+        public const int MEDIUM_DPS = 2;
+        public const int STRONG_DPS = 3;
 
         public static Unit CreateWeakMelee()
         {
             Unit u = new Unit();
-            u.LoadContent("enemies/weakMelee", Vector2.Zero, MEDIUM_SPEED, WEAK_HEALTH, WEAK_MONEY, Behaviour.BasicMove);
+            u.LoadContent("enemies/weakMelee", Vector2.Zero, MEDIUM_SPEED, WEAK_HEALTH, WEAK_MONEY, WEAK_DPS, Behaviour.BasicMove);
             return u;
         }
 
         public static Unit CreateMediumMelee()
         {
             Unit u = new Unit();
-            u.LoadContent("enemies/trojan", Vector2.Zero, MEDIUM_SPEED, MEDIUM_HEALTH, MEDIUM_MONEY, Behaviour.BasicMove);
+            u.LoadContent("enemies/trojan", Vector2.Zero, MEDIUM_SPEED, MEDIUM_HEALTH, MEDIUM_MONEY, MEDIUM_DPS, Behaviour.BasicMove);
             return u;
         }
 
         public static Unit CreateStrongMelee()
         {
             Unit u = new Unit();
-            u.LoadContent("enemies/heavyMelee", Vector2.Zero, SLOW_SPEED, STRONG_HEALTH, STRONG_MONEY, Behaviour.BasicMove);
+            u.LoadContent("enemies/heavyMelee", Vector2.Zero, SLOW_SPEED, STRONG_HEALTH, STRONG_MONEY, STRONG_DPS, Behaviour.BasicMove);
             return u;
         }
 
         public static Unit CreateWeakRanged()
         {
             Unit u = new Unit();
-            u.LoadContent("testUnit2", Vector2.Zero, FAST_SPEED, WEAK_HEALTH, WEAK_MONEY, Behaviour.BasicMove);
+            u.LoadContent("testUnit2", Vector2.Zero, FAST_SPEED, WEAK_HEALTH, WEAK_MONEY, WEAK_DPS, Behaviour.BasicMove);
             return u;
         }
 
         public static Unit CreateMediumRanged()
         {
             Unit u = new Unit();
-            u.LoadContent("testUnit2", Vector2.Zero, MEDIUM_SPEED, MEDIUM_HEALTH, MEDIUM_MONEY, Behaviour.BasicMove);
+            u.LoadContent("testUnit2", Vector2.Zero, MEDIUM_SPEED, MEDIUM_HEALTH, MEDIUM_MONEY, MEDIUM_DPS, Behaviour.BasicMove);
             return u;
         }
 
         public static Unit CreateStrongRanged()
         {
             Unit u = new Unit();
-            u.LoadContent("testUnit2", Vector2.Zero, MEDIUM_SPEED, STRONG_HEALTH, STRONG_MONEY, Behaviour.BasicMove);
+            u.LoadContent("testUnit2", Vector2.Zero, MEDIUM_SPEED, STRONG_HEALTH, STRONG_MONEY, STRONG_DPS, Behaviour.BasicMove);
             return u;
         }
     }

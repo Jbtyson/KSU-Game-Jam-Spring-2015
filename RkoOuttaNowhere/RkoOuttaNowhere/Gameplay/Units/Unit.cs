@@ -17,6 +17,8 @@ namespace RkoOuttaNowhere.Gameplay.Units
         private int _health, _maxHealth, _baseMoney;
         private float _moveSpeed;
         private bool _moving;
+        private float _dps;
+        private int _attackTimerMax = 1000, _attackTimer = 0; //Timer set to attack every 1 second
         private Behaviour _behaviour;
 
         public int Health 
@@ -33,7 +35,7 @@ namespace RkoOuttaNowhere.Gameplay.Units
             _behaviour = Behaviour.BasicMove;
         }
 
-        public void LoadContent(string path, Vector2 position, float movespeed, int maxHealth, int baseMoney, Behaviour behaviour, bool isally = false)
+        public void LoadContent(string path, Vector2 position, float movespeed, int maxHealth, int baseMoney, float dps, Behaviour behaviour, bool isally = false)
         {
             base.LoadContent();
 
@@ -55,6 +57,7 @@ namespace RkoOuttaNowhere.Gameplay.Units
             _maxHealth = _health = maxHealth;
             _behaviour = behaviour;
             _moving = true;
+            _dps = dps;
             this.IsAlly = isally;
 
             PhysicsManager.Instance.AddUnit(this);
@@ -80,6 +83,21 @@ namespace RkoOuttaNowhere.Gameplay.Units
 
                 if (_position.X + _image.SourceRect.Width >= 800)
                     _moving = false;
+
+            }
+            else if(!_moving)
+            {
+                if (!_moving)
+                {
+                    _attackTimer += (int)gametime.ElapsedGameTime.TotalMilliseconds;
+
+                    if (_attackTimer >= _attackTimerMax)
+                    {
+                        _attackTimer = 0;
+                        //attack firewall
+                        RKOGame.Instance.getHealth -= (int)_dps;
+                    }
+                }
             }
 
             _image.Update(gametime);
