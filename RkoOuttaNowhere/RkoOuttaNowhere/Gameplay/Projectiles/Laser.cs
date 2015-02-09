@@ -19,14 +19,14 @@ namespace RkoOuttaNowhere.Gameplay.Projectiles
             _velocity = dest - start;
             if (_velocity != Vector2.Zero)
                 _velocity.Normalize();
-            _image = new Image();
+            Image = new Image();
         }
 
         public void LoadContent(bool isAlly = false) 
         {
-            _image.Path = "Gameplay/Laser";
-            _image.Position = _position;
-            _image.LoadContent();
+            Image.Path = "Gameplay/Laser";
+            Image.Position = _position;
+            Image.LoadContent();
             this.IsAlly = isAlly;
             this.HitBox = new CircularHitBox(_position, Math.Max((float)_dimensions.X, (float)_dimensions.Y));
             PhysicsManager.Instance.AddProjectile(this);
@@ -34,18 +34,18 @@ namespace RkoOuttaNowhere.Gameplay.Projectiles
 
         public override void UnloadContent() 
         {
-            _image.UnloadContent();
+            Image.UnloadContent();
         }
 
         public override void Update(GameTime gametime) 
         {
-            _image.Position += _velocity * _speed * (float)gametime.ElapsedGameTime.TotalSeconds;
-            _image.Update(gametime);            
+            Image.Position += _velocity * _speed * (float)gametime.ElapsedGameTime.TotalSeconds;
+            Image.Update(gametime);            
         }
 
         public override void Draw(SpriteBatch spritebatch) 
         {
-            _image.Draw(spritebatch);
+            Image.Draw(spritebatch);
         }
 
     }

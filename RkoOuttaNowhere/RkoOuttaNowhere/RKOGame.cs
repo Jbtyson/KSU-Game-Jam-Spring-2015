@@ -59,7 +59,7 @@ namespace RkoOuttaNowhere
             _health = 100;
             _currentLevel = 0;
             _currentWave = 0;
-            _highestCompletedLevel = 8;
+            _highestCompletedLevel = -1;
             _currentWorld = 0;
         }
 

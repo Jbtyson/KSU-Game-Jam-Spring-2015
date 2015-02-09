@@ -36,10 +36,10 @@ namespace RkoOuttaNowhere.Gameplay
             base.LoadContent();
             _position = new Vector2(825, 75);
 
-            _image.Path = "Gameplay/gun_placement_dynamic";
-            _image.Position = _position;
-            _image.Scale = 2 * Vector2.One;
-            _image.LoadContent();
+            Image.Path = "Gameplay/gun_placement_dynamic";
+            Image.Position = _position;
+            Image.Scale = 2 * Vector2.One;
+            Image.LoadContent();
             _stand.Path = "Gameplay/gun_placement_static";
             _stand.Position = _position + new Vector2(-12, 20);
             _stand.LoadContent();
@@ -56,17 +56,17 @@ namespace RkoOuttaNowhere.Gameplay
         {
             base.Update(gametime);
 
+            delay++;
             if (InputManager.Instance.LeftMouseDown() || InputManager.Instance.LeftMouseClick())
             {
-                if (delay%20 == 0)
+                if (delay > 20)
                 {
                     ProjectileFactory.Shoot(_position, damageModifier, _ammo, true);
                     delay = 0;
                 }
-                delay++;
             }
-            _image.Position = _position;
-            _image.Rotation = (float)Math.Atan2(_position.Y - InputManager.Instance.MousePosition.Y, _position.X - InputManager.Instance.MousePosition.X);
+            Image.Position = _position;
+            Image.Rotation = (float)Math.Atan2(_position.Y - InputManager.Instance.MousePosition.Y, _position.X - InputManager.Instance.MousePosition.X);
 
             _stand.Update(gametime);
         }
@@ -76,7 +76,7 @@ namespace RkoOuttaNowhere.Gameplay
             _stand.Draw(spritebatch);
             base.Draw(spritebatch);
 
-            _image.Draw(spritebatch);
+            Image.Draw(spritebatch);
         }
         /*
         /// <summary>

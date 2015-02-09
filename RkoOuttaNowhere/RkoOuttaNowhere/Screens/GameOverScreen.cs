@@ -36,9 +36,13 @@ namespace RkoOuttaNowhere.Screens
         {
             base.Update(gameTime);
 
-            if (InputManager.Instance.KeyPressed(Keys.G))
+            if (InputManager.Instance.KeyPressed(Keys.Space))
             {
-                ScreenManager.Instance.ChangeScreens(ScreenType.Title);
+                TowerDefense.ExitGame();
+            }
+            if (InputManager.Instance.KeyPressed(Keys.F10))
+            {
+                ScreenManager.Instance.ChangeScreens(ScreenType.Victory);
             }
         }
 

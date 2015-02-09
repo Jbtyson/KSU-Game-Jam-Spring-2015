@@ -13,6 +13,7 @@ namespace RkoOuttaNowhere.Gameplay
     public class Firewall : GameObject
     {
         private Image[] _images;
+        private int _currentImg;
 
         public Firewall()
             : base()
@@ -43,7 +44,7 @@ namespace RkoOuttaNowhere.Gameplay
             _images[3].Position = _position;
             _images[3].LoadContent();
 
-            _image = _images[0];
+            Image = _images[0];
         }
 
         public override void UnloadContent()
@@ -55,14 +56,31 @@ namespace RkoOuttaNowhere.Gameplay
         {
             base.Update(gametime);
 
-            _image.Update(gametime);
+            Image.Update(gametime);
+
+            if (RKOGame.Instance.getHealth <= 25)
+            {
+                Image = _images[3];
+            }
+            else if (RKOGame.Instance.getHealth <= 50)
+            {
+                Image = _images[2];
+            }
+            else if (RKOGame.Instance.getHealth <= 75)
+            {
+                Image = _images[1];
+            }
+            else
+            {
+                Image = _images[0];
+            }
         }
 
         public override void Draw(SpriteBatch spritebatch)
         {
             base.Draw(spritebatch);
 
-            _image.Draw(spritebatch);
+            Image.Draw(spritebatch);
         }
     }
 }

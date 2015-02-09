@@ -40,15 +40,15 @@ namespace RkoOuttaNowhere.Gameplay.Units
             base.LoadContent();
 
             _position = position;
-            _image.Path = path;
-            _image.Position = position;
-            _image.LoadContent();
-            _image.ActivateEffect("SpriteSheetEffect");
-            _image.IsActive = true;
-            _image.SpriteSheetEffect.AmountOfFrames = new Vector2(3, 1);
-            _image.SpriteSheetEffect.SwitchFrame = 100;
+            Image.Path = path;
+            Image.Position = position;
+            Image.LoadContent();
+            Image.ActivateEffect("SpriteSheetEffect");
+            Image.IsActive = true;
+            Image.SpriteSheetEffect.AmountOfFrames = new Vector2(3, 1);
+            Image.SpriteSheetEffect.SwitchFrame = 100;
             
-            _dimensions = new Vector2(_image.SourceRect.Width, _image.SourceRect.Height);
+            _dimensions = new Vector2(Image.SourceRect.Width, Image.SourceRect.Height);
             _baseMoney = baseMoney;
 
             this.HitBox = new RectangularHitBox(position, (int)_dimensions.X, (int)_dimensions.Y);
@@ -81,7 +81,7 @@ namespace RkoOuttaNowhere.Gameplay.Units
                     _position = temp;
                 }
 
-                if (_position.X + _image.SourceRect.Width >= 800)
+                if (_position.X + Image.SourceRect.Width >= 800)
                     _moving = false;
 
             }
@@ -100,7 +100,7 @@ namespace RkoOuttaNowhere.Gameplay.Units
                 }
             }
 
-            _image.Update(gametime);
+            Image.Update(gametime);
         }
 
         public override void Draw(SpriteBatch spritebatch)

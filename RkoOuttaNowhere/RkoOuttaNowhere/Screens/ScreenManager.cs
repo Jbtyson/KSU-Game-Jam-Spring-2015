@@ -177,6 +177,7 @@ namespace RkoOuttaNowhere.Screens
         {
             _currentScreen.UnloadContent();
             _image.UnloadContent();
+            
         }
 
         /// <summary>
@@ -199,6 +200,19 @@ namespace RkoOuttaNowhere.Screens
             _currentScreen.Draw(spriteBatch);
             if (IsTransitioning)
                 _image.Draw(spriteBatch);
+        }
+
+        public void ResetGame()
+        {
+            foreach (GameScreen screen in _screens)
+            {
+                screen.UnloadContent();
+            }
+            UnloadContent();
+
+            _screens.Clear();
+            Initialize();
+            LoadContent(Content);
         }
     }
 }

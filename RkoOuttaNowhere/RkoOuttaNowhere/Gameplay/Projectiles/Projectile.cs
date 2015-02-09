@@ -28,9 +28,9 @@ namespace RkoOuttaNowhere.Gameplay
 
         public void LoadContent(bool isAlly = false)
         {
-            _image.Path = "Gameplay/" + ammo.ToString();
-            _image.Position = _position;
-            _image.LoadContent();
+            Image.Path = "Gameplay/" + ammo.ToString();
+            Image.Position = _position;
+            Image.LoadContent();
             this.IsAlly = isAlly;
 
             PhysicsManager.Instance.AddProjectile(this);
@@ -38,20 +38,20 @@ namespace RkoOuttaNowhere.Gameplay
 
         public override void UnloadContent()
         {
-            _image.UnloadContent();
+            Image.UnloadContent();
         }
 
         public override void Update(GameTime gametime)
         {
             this.HitBox.Position += _velocity * _speed * (float)gametime.ElapsedGameTime.TotalSeconds;
-            _image.Position = this.HitBox.Position;
-            _image.Update(gametime);
+            Image.Position = this.HitBox.Position;
+            Image.Update(gametime);
             
         }
 
         public override void Draw(SpriteBatch spritebatch)
         {
-            _image.Draw(spritebatch);
+            Image.Draw(spritebatch);
         }
 
         public Vector2 Position { get { return _position; } }

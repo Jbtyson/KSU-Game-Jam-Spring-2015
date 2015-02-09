@@ -51,7 +51,7 @@ namespace RkoOuttaNowhere.Gameplay.Units
         public static Unit CreateWeakRanged()
         {
             Unit u = new Unit();
-            u.LoadContent("testUnit2", Vector2.Zero, FAST_SPEED, WEAK_HEALTH, WEAK_MONEY, WEAK_DPS, Behaviour.BasicMove);
+            u.LoadContent("enemies/weakAerialRange", Vector2.Zero, FAST_SPEED, WEAK_HEALTH, WEAK_MONEY, WEAK_DPS, Behaviour.BasicMove);
             return u;
         }
 
@@ -73,6 +73,7 @@ namespace RkoOuttaNowhere.Gameplay.Units
         {
             Unit u = new Unit();
             u.LoadContent("enemies/weakAerialMelee", Vector2.Zero, SLOW_SPEED, WEAK_HEALTH, WEAK_MONEY, WEAK_DPS, Behaviour.BasicMove);
+            u.Image.SpriteSheetEffect.AmountOfFrames = new Vector2(1, 1);
             return u;
         }
 
@@ -80,6 +81,7 @@ namespace RkoOuttaNowhere.Gameplay.Units
         {
             Unit u = new Unit();
             u.LoadContent("enemies/weakAerialRange", Vector2.Zero, SLOW_SPEED, WEAK_HEALTH, WEAK_MONEY, WEAK_DPS, Behaviour.BasicMove);
+            u.Image.SpriteSheetEffect.AmountOfFrames = new Vector2(1, 1);
             return u;
         }
     }

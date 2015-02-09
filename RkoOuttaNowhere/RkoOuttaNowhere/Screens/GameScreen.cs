@@ -44,6 +44,7 @@ namespace RkoOuttaNowhere.Screens
         public virtual void UnloadContent()
         {
             _content.Unload();
+            _backgroundImage.UnloadContent();
         }
 
         public virtual void Update(GameTime gameTime)

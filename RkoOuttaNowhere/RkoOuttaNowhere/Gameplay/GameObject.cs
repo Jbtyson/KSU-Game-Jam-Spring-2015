@@ -18,7 +18,13 @@ namespace RkoOuttaNowhere.Gameplay
         protected Vector2 _position { get { return HitBox.Position; } set { HitBox.Position = value; } }
         
         protected Vector2 _velocity, _dimensions;
-        protected Image _image;
+        private Image _image;
+
+        public Image Image
+        {
+            get { return _image; }
+            set { _image = value; }
+        }
         protected bool _isVisible, _isActive, _isCollidable, _hasGravity;
         
         public HitBox HitBox { get; set; }
